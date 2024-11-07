@@ -1,0 +1,102 @@
+codigo html
+
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Página de Contato</title>
+    <link rel="stylesheet" href="estilo.css">
+</head>
+<body>
+
+    <div class="container">
+        <h1>Formulário de Contato</h1>
+        
+        
+        <form id="form-contato" action="javascript:void(0);" onsubmit="validarFormulario()">
+            <div class="campo">
+                <label for="nome">Nome:</label>
+                <input type="text" id="nome" name="nome" required>
+            </div>
+            <div class="campo">
+                <label for="email">Email:</label>
+                <input type="email" id="email" name="email" required>
+            </div>
+            <div class="campo">
+                <label for="mensagem">Mensagem:</label>
+                <textarea id="mensagem" name="mensagem" rows="4" required></textarea>
+            </div>
+            <button type="submit">Enviar</button>
+        </form>
+
+        
+        <div id="mensagem-status" class="status"></div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
+
+css
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+  background-color: #28a745; 
+  color: white;
+  font-family: Arial, sans-serif;
+  font-size: 16px;
+}
+
+th, td {
+  padding: 12px;
+  text-align: left;
+  border: 1px solid #fff; 
+}
+
+th {
+  background-color: #218838; 
+}
+
+tr:nth-child(even) {
+  background-color: #34d058; 
+}
+
+tr:nth-child(odd) {
+  background-color: #28a745; 
+}
+
+tr:hover {
+  background-color: #218838; 
+}
+
+javascritp
+
+function validarFormulario() {
+    var nome = document.getElementById("nome").value;
+    var email = document.getElementById("email").value;
+    var mensagem = document.getElementById("mensagem").value;
+
+    var statusMessage = document.getElementById("mensagem-status");
+
+    statusMessage.innerHTML = "";
+    statusMessage.classList.remove("sucesso", "erro");
+
+    if (nome === "" || email === "" || mensagem === "") {
+        statusMessage.innerHTML = "Todos os campos são obrigatórios!";
+        statusMessage.classList.add("erro");
+        return false;
+    }
+
+    var emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    if (!emailRegex.test(email)) {
+        statusMessage.innerHTML = "Por favor, insira um email válido.";
+        statusMessage.classList.add("erro");
+        return false;
+    }
+
+    statusMessage.innerHTML = "Formulário enviado com sucesso!";
+    statusMessage.classList.add("sucesso");
+
+    document.getElementById("form-contato").reset();

@@ -1,0 +1,161 @@
+coduigo html
+
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Calculadora de IMC</title>
+    <link rel="stylesheet" href="estilo.css">
+</head>
+<body>
+
+    <div class="container">
+        <h1>Calculadora de IMC</h1>
+        
+        
+        <form id="form-imc" action="javascript:void(0);" onsubmit="calcularIMC()">
+            <div class="campo">
+                <label for="peso">Peso (kg):</label>
+                <input type="number" id="peso" name="peso" placeholder="Digite seu peso" required>
+            </div>
+            <div class="campo">
+                <label for="altura">Altura (m):</label>
+                <input type="number" step="0.01" id="altura" name="altura" placeholder="Digite sua altura" required>
+            </div>
+            <button type="submit">Calcular IMC</button>
+        </form>
+
+        
+        <div id="resultado" class="resultado"></div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
+
+codigo css
+
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f7f7f7;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+}
+
+.container {
+    background-color: white;
+    border-radius: 8px;
+    padding: 30px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    width: 100%;
+    max-width: 500px;
+}
+
+h1 {
+    text-align: center;
+    color: #333;
+    margin-bottom: 20px;
+}
+
+.campo {
+    margin-bottom: 15px;
+}
+
+.campo label {
+    display: block;
+    font-size: 14px;
+    color: #333;
+}
+
+.campo input {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    font-size: 16px;
+}
+
+button {
+    width: 100%;
+    padding: 12px;
+    background-color: #4CAF50;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    font-size: 16px;
+    cursor: pointer;
+}
+
+button:hover {
+    background-color: #45a049;
+}
+
+.resultado {
+    text-align: center;
+    margin-top: 20px;
+    padding: 10px;
+    border-radius: 4px;
+    font-weight: bold;
+    font-size: 18px;
+}
+
+.resultado p {
+    margin: 10px 0;
+}
+
+.peso normal {
+    background-color: #4CAF50;
+    color: white;
+}
+
+.sobrepeso {
+    background-color: #FF9800;
+    color: white;
+}
+
+.Obesidade {
+    background-color: #f44336;
+    color: white;
+}
+
+javascript
+
+function calcularIMC() {
+   
+    var peso = parseFloat(document.getElementById("peso").value);
+    var altura = parseFloat(document.getElementById("altura").value);
+
+   
+    var resultadoDiv = document.getElementById("resultado");
+
+    
+    if (isNaN(peso) || isNaN(altura) || peso <= 0 || altura <= 0) {
+        resultadoDiv.innerHTML = "Por favor, insira valores válidos para peso e altura.";
+        resultadoDiv.classList.add("imc-alerta");
+        resultadoDiv.classList.remove("imc-ok", "imc-perigo");
+        return;
+    }
+
+    var imc = peso / (altura * altura);
+
+    resultadoDiv.classList.remove("imc-ok", "imc-alerta", "imc-perigo");
+
+    if (imc < 18.5) {
+        resultadoDiv.innerHTML = "Seu IMC é: " + imc.toFixed(2) + " - Abaixo do peso.";
+        resultadoDiv.classList.add("Abaixo do peso");
+    } else if (imc >= 18.5 && imc < 24.9) {
+        resultadoDiv.innerHTML = "Seu IMC é: " + imc.toFixed(2) + " - Peso normal.";
+        resultadoDiv.classList.add("Peso normal");
+    } else if (imc >= 25 && imc < 29.9) {
+        resultadoDiv.innerHTML = "Seu IMC é: " + imc.toFixed(2) + " - Sobrepeso.";
+        resultadoDiv.classList.add("Sobrepeso");
+    } else {
+        resultadoDiv.innerHTML = "Seu IMC é: " + imc.toFixed(2) + " - Obesidade.";
+        resultadoDiv.classList.add("Obesidade");
+    }
+}

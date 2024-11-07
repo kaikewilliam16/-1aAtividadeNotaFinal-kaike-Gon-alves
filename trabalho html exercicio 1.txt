@@ -1,0 +1,102 @@
+Codigo html
+
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Perfil Pessoal</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <header>
+        <h1>Perfil Pessoal</h1>
+        <p>Informações sobre o curso e objetivos profissionais.</p>
+    </header>
+
+    <section id="info">
+        <div class="card">
+            <h2>Informações Pessoais</h2>
+            <p><strong>Nome:</strong> Kaike Willia Camara Gonçalves</p>
+            <p><strong>Curso:</strong> Ciência da Computação</p>
+            <p><strong>Matrícula:</strong> 202403840121</p>
+        </div>
+    </section>
+
+    <section id="objetivo">
+        <div class="card">
+            <h2>Objetivo Profissional</h2>
+            <p>Meu objetivo é me tornar um desenvolvedor na area de TI, especializado em Progamação. Pretendo contribuir para soluções inovadoras e ajudar positivamente a sociedade através da tecnologia.</p>
+        </div>
+    </section>
+
+    <footer>
+        <p>© 2024 Kaike Gonçalves</p>
+    </footer>
+</body>
+</html>
+
+css
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f4f4f4;
+    color: #333;
+    line-height: 1.6;
+}
+
+header {
+    background-color: #4CAF50;
+    color: white;
+    text-align: center;
+    padding: 20px;
+}
+
+header h1 {
+    font-size: 36px;
+}
+
+header p {
+    font-size: 18px;
+}
+
+section {
+    margin: 20px;
+}
+
+.card {
+    background-color: white;
+    padding: 20px;
+    margin: 10px 0;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+.card h2 {
+    font-size: 24px;
+    margin-bottom: 15px;
+}
+
+.card p {
+    font-size: 18px;
+}
+
+footer {
+    text-align: center;
+    background-color: #333;
+    color: white;
+    padding: 10px;
+    position: fixed;
+    width: 100%;
+    bottom: 0;
+}
+
+footer p {
+    font-size: 14px;
+}
